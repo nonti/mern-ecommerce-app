@@ -13,6 +13,7 @@ import ShoppingAccount from "./pages/shopping-view/account"
 import ShoppingCheckout from "./pages/shopping-view/checkout"
 import ShoppingLisitng from "./pages/shopping-view/lisitng"
 import ShoppingHome from "./pages/shopping-view/home"
+import CheckAuth from "./components/common/check-auth"
 
 function App() {
 
@@ -20,7 +21,11 @@ function App() {
     <div className="flex flex-col overflow-hidden bg-slate-400"> 
       {/**common  components */}
       <Routes>
-        <Route path='/auth' element={<AuthLayout/>} >
+        <Route path='/auth' element={
+          <CheckAuth>
+            <AuthLayout/>
+          </CheckAuth>
+        }>
           <Route path='signin' element={<Signin/>} />
           <Route path='signup' element={<Signup/>} />
         </Route>

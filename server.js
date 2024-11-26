@@ -2,6 +2,8 @@ import express from 'express';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 const app = express();
@@ -9,8 +11,8 @@ const PORT = process.env.PORT || 4000;
 
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://nonty:77mVFs5I6lFPSBP9@mern-ecommerce-cluster.vl1kr.mongodb.net/')
- .then(() => console.log('MongoDB connected...')).catch(err => console.log(err));
+mongoose.connect(process.env.MONGODB_URI)
+ .then(() => console.log('Connected to MongoDB ...')).catch(err => console.log(err));
 
 // Middleware
 app.use(express.json());
